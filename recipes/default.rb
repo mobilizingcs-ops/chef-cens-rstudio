@@ -24,7 +24,8 @@ require 'chef-vault'
 
 # install/enable nginx
 node.set['nginx']['default_site_enabled'] = false
-node.set['nginx']['install_method'] = 'repo'
+node.set['nginx']['install_method'] = 'package'
+include_recipe 'nginx::repo'
 include_recipe 'nginx'
 
 # install R and required packages?
@@ -34,14 +35,14 @@ include_recipe 'r::default'
 
 # SSL
 item = ChefVault::Item.load('ssl', 'mobilizingcs.org')
-file "/etc/ssl/certs/mobilizingcs.org.crt" do
+file '/etc/ssl/certs/mobilizingcs.org.crt' do
   owner 'root'
   group 'root'
   mode '0777'
   content item['cert']
   notifies :reload, 'service[nginx]', :delayed
 end
-file "/etc/ssl/private/mobilizingcs.org.key" do
+file '/etc/ssl/private/mobilizingcs.org.key' do
   owner 'root'
   group 'root'
   mode '0600'
