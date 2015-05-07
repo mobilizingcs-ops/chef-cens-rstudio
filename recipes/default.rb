@@ -31,7 +31,7 @@ include_recipe 'nginx'
 # install R and required packages?
 r 'default' do
   enable_cran_repo 'cran.stat.ucla.edu'
-  site_profile[
+  site_profile [
     'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)'
   ]
 end
