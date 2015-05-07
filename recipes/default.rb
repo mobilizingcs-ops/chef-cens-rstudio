@@ -29,9 +29,12 @@ include_recipe 'nginx::repo'
 include_recipe 'nginx'
 
 # install R and required packages?
-node.set['r']['cran_mirror'] = 'http://cran.stat.ucla.edu/'
-include_recipe 'r::default'
-
+r 'default' do
+  enable_cran_repo 'cran.stat.ucla.edu'
+  site_profile[
+    'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)'
+  ]
+end
 
 # SSL
 item = ChefVault::Item.load('ssl', 'mobilizingcs.org')
