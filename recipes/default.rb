@@ -32,7 +32,17 @@ include_recipe 'nginx'
 r 'default' do
   enable_cran_repo 'cran.stat.ucla.edu'
   site_profile [
-    'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)'
+    'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)',
+    'suppressPackageStartupMessages(library(tm, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(dismo, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(rgdal, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(raster, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(wordcloud, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(latticeExtra, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(plyr, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(dplyr, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(MobilizeSimple, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(ggplot2, warn.conflicts=FALSE, quietly=TRUE))'
   ]
 end
 
