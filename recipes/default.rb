@@ -46,6 +46,16 @@ r 'default' do
   ]
 end
 
+cran_pkgs = %w(raster dismo tm RColorBrewer rgdal sp wordcloud stringr plyr dplyr mosaic latticeExtra grid rpart rpart.plot curl)
+
+# manage installation of our dependencies. should no-op since we have no interest in upgrading currently.
+cran_pkgs.each do |pkg|
+  cran pkg do
+    repo 'http://cran.stat.ucla.edu'
+    action [:install]
+  end
+end
+
 # SSL
 item = ChefVault::Item.load('ssl', 'mobilizingcs.org')
 file '/etc/ssl/certs/mobilizingcs.org.crt' do
