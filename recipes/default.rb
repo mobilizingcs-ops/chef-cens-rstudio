@@ -98,3 +98,11 @@ end
 nginx_site 'rstudio' do
   action :enable
 end
+
+# raster hack
+directory '/tmp/R_raster_tmp' do
+  owner 'root'
+  group 'root'
+  mode '0777'
+  action :create
+end
