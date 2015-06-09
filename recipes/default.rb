@@ -38,7 +38,7 @@ r 'default' do
   ]
 end
 
-cran_pkgs = %w(raster dismo tm RColorBrewer rgdal sp wordcloud stringr plyr dplyr mosaic latticeExtra grid rpart rpart.plot curl)
+cran_pkgs = %w(dplyr stats curl mosaic)
 
 # manage installation of our dependencies. should no-op since we have no interest in upgrading currently.
 cran_pkgs.each do |pkg|
