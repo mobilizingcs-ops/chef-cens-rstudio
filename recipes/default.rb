@@ -89,6 +89,16 @@ execute 'activate rstudio server pro' do
   not_if 'rstudio-server license-manager status | grep "Status: Activated"'
 end
 
+# RStudio server pro conf files
+template '/etc/rstudio/rsession.conf' do
+  source 'ression.conf.erb'
+  mode '0755'
+end
+template '/etc/rstudio/rserver.conf' do
+  source 'rserver.conf.erb'
+  mode '0755'
+end
+
 # nginx conf
 template '/etc/nginx/sites-available/rstudio' do
   source 'rstudio-nginx.conf.erb'
