@@ -66,6 +66,7 @@ file '/etc/ssl/private/mobilizingcs.org.key' do
 end
 
 # install rstudio server pro
+directory '/root/rstudio_deb_pkgs'
 rstudio_server_pro_version = '0.99.441'
 rstudio_server_pro_checksum = '0a5ba9f05ee9999490d245355689900d'
 package 'gdebi-core'
