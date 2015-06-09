@@ -70,18 +70,18 @@ rstudio_server_pro_version = '0.99.441'
 rstudio_server_pro_checksum = '0a5ba9f05ee9999490d245355689900d'
 package 'gdebi-core'
 remote_file 'download rstudio deb' do
-  path "/root/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
+  path "/root/rstudio_deb_pkgs/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
   source "http://download2.rstudio.org/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
   checksum rstudio_server_pro_checksum
   notifies :run, 'execute[install rstudio deb]', :immediately
 end
 execute 'install rstudio deb' do
-  command "gdebi /root/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
+  command "gdebi --non-interactive /root/rstudio_deb_pkgs/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
   action :nothing
 end
 
 # activate? rstudio server pro
-licenses = ChefVault::Item.load('license', 'rstudio')
+licenses = ChefVault::Item.load('rstudio', 'license')
 license = licenses[node['fqdn']]
 execute 'activate rstudio server pro' do
   command "rstudio-server license-manager activate #{license}; rstudio-server restart"
