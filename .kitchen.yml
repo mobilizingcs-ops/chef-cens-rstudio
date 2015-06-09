@@ -1,16 +1,16 @@
 ---
 driver:
-  name: vagrant
+  name: docker
+driver_config:
+  require_chef_omnibus: true
+  use_sudo: false
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-12.04
   - name: ubuntu-14.04
 
 suites:
   - name: default
-    run_list:
-      - recipe[cens-rstudio::default]
-    attributes:
+    run_list: ['cens-rstudio::default']

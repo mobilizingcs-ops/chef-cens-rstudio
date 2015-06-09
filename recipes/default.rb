@@ -65,6 +65,21 @@ file '/etc/ssl/private/mobilizingcs.org.key' do
   notifies :reload, 'service[nginx]', :delayed
 end
 
+# install rstudio server pro
+rstudio_server_pro_version = '0.99.441'
+rstudio_server_pro_checksum = '0a5ba9f05ee9999490d245355689900d'
+package 'gdebi-core'
+remote_file 'download rstudio deb' do
+  path "/root/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
+  source "http://download2.rstudio.org/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
+  checksum rstudio_server_pro_checksum
+  notifies :run, 'execute[install rstudio deb]', :immediately
+end
+execute 'install rstudio deb' do
+  command "gdebi /root/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
+  action :nothing
+end
+
 # nginx conf
 template '/etc/nginx/sites-available/rstudio' do
   source 'rstudio-nginx.conf.erb'
