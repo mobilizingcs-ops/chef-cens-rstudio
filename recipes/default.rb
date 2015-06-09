@@ -80,6 +80,14 @@ execute 'install rstudio deb' do
   action :nothing
 end
 
+# activate? rstudio server pro
+licenses = ChefVault::Item.load('license', 'rstudio')
+license = licenses[node['fqdn']]
+execute 'activate rstudio server pro' do
+  command "rstudio-server license-manager activate #{license}; rstudio-server restart"
+  not_if 'rstudio-server license-manager status | grep "Status: Activated"'
+end
+
 # nginx conf
 template '/etc/nginx/sites-available/rstudio' do
   source 'rstudio-nginx.conf.erb'
