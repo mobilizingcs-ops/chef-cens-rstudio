@@ -33,9 +33,9 @@ r 'default' do
   enable_cran_repo 'cran.stat.ucla.edu'
   site_profile [
     'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)})',
-    'suppressPackageStartupMessages(library(MobilizeSimple, warn.conflicts=FALSE, quietly=TRUE))',
+    'suppressPackageStartupMessages(library(mobilizr, warn.conflicts=FALSE, quietly=TRUE))',
     'suppressPackageStartupMessages(library(ggplot2, warn.conflicts=FALSE, quietly=TRUE))'
-  ]
+   ]
 end
 
 cran_pkgs = %w(dplyr stats curl mosaic)
@@ -91,7 +91,7 @@ end
 
 # RStudio server pro conf files
 template '/etc/rstudio/rsession.conf' do
-  source 'ression.conf.erb'
+  source 'rsession.conf.erb'
   mode '0755'
 end
 template '/etc/rstudio/rserver.conf' do
