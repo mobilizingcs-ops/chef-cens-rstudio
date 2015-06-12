@@ -4,7 +4,7 @@ maintainer_email 'technolengy@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures cens-rstudio'
 long_description 'Installs/Configures cens-rstudio'
-version '0.0.18'
+version '0.0.19'
 
 %w(ubuntu).each do |os|
   supports os

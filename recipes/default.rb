@@ -38,7 +38,7 @@ r 'default' do
    ]
 end
 
-cran_pkgs = %w(dplyr stats curl mosaic)
+cran_pkgs = %w(dplyr stats curl mosaic rstudioapi)
 
 # manage installation of our dependencies. should no-op since we have no interest in upgrading currently.
 cran_pkgs.each do |pkg|
