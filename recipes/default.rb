@@ -33,7 +33,7 @@ r 'default' do
   enable_cran_repo 'cran.stat.ucla.edu'
   site_profile [
     'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)})',
-    'suppressPackageStartupMessages(library(mobilizr, warn.conflicts=FALSE, quietly=TRUE))'
+    '# suppressPackageStartupMessages(library(mobilizr, warn.conflicts=FALSE, quietly=TRUE))'
    ]
 end
 
@@ -66,8 +66,8 @@ end
 
 # install rstudio server pro
 directory '/root/rstudio_deb_pkgs'
-rstudio_server_pro_version = '0.99.441'
-rstudio_server_pro_checksum = '0a5ba9f05ee9999490d245355689900d'
+rstudio_server_pro_version = '0.99.446'
+rstudio_server_pro_checksum = '25a1dfc4c1d999b6106c9b1e587c97c0'
 package 'gdebi-core'
 remote_file 'download rstudio deb' do
   path "/root/rstudio_deb_pkgs/rstudio-server-pro-#{rstudio_server_pro_version}-amd64.deb"
