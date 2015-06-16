@@ -33,8 +33,7 @@ r 'default' do
   enable_cran_repo 'cran.stat.ucla.edu'
   site_profile [
     'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)})',
-    'suppressPackageStartupMessages(library(mobilizr, warn.conflicts=FALSE, quietly=TRUE))',
-    'suppressPackageStartupMessages(library(ggplot2, warn.conflicts=FALSE, quietly=TRUE))'
+    'suppressPackageStartupMessages(library(mobilizr, warn.conflicts=FALSE, quietly=TRUE))'
    ]
 end
 
