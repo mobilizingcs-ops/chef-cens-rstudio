@@ -37,7 +37,7 @@ r 'default' do
    ]
 end
 
-cran_pkgs = %w(dplyr stats curl mosaic rstudioapi)
+cran_pkgs = %w(dplyr stats curl mosaic rstudioapi rmarkdown bitops evaluate htmltools knitr yaml)
 
 # manage installation of our dependencies. should no-op since we have no interest in upgrading currently.
 cran_pkgs.each do |pkg|
